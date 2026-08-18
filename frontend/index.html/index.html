@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Health · Blockchain Dashboard</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Link to CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="app-container">
+
+        <!-- ========================================== -->
+        <!-- SIDEBAR (Left Navigation)                   -->
+        <!-- ========================================== -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <i class="fas fa-hexagon"></i>
+                <span>Health<span>Chain</span></span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active"><a href="#"><i class="fas fa-th-large"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fas fa-user-injured"></i> Patients</a></li>
+                    <li><a href="#"><i class="fas fa-user-md"></i> Doctors</a></li>
+                    <li><a href="#"><i class="fas fa-calendar-check"></i> Consultations</a></li>
+                    <li><a href="#"><i class="fas fa-file-medical"></i> Health Records</a></li>
+                    <li><a href="#"><i class="fas fa-link"></i> Blockchain Ledger</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <img src="https://ui-avatars.com/api/?name=Frontend+Dev&background=0D9488&color=fff&size=40" alt="User Avatar">
+                    <div>
+                        <p class="user-name">Frontend Dev</p>
+                        <p class="user-role">System Admin</p>
+                    </div>
+                </div>
+                <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i></a>
+            </div>
+        </aside>
+
+        <!-- ========================================== -->
+        <!-- MAIN CONTENT (Right Side)                  -->
+        <!-- ========================================== -->
+        <main class="main-content">
+
+            <!-- TOP HEADER -->
+            <header class="top-header">
+                <div class="header-left">
+                    <h1>Dashboard</h1>
+                    <p class="breadcrumb">Home / <span>Overview</span></p>
+                </div>
+                                <div class="header-right">
+                    <!-- New Consultation Button (NEW) -->
+                    <a href="/frontend/pages/new-consultation.html" class="btn-primary-header">
+                        <i class="fas fa-plus-circle"></i> New Consult
+                    </a>
+                    
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search patients, records...">
+                    </div>
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </button>
+                    <div class="chain-status">
+                        <i class="fas fa-circle" style="color: #10b981;"></i> 
+                        <span>Mainnet Live</span>
+                    </div>
+                </div>
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </button>
+                    <div class="chain-status">
+                        <i class="fas fa-circle" style="color: #10b981;"></i> 
+                        <span>Mainnet Live</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- ========================================== -->
+            <!-- STATISTICS CARDS (UPDATED: Added IDs)      -->
+            <!-- ========================================== -->
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fas fa-user-injured"></i>
+                    </div>
+                    <div class="stat-info">
+                        <!-- UPDATED: Added id="stat-patients" -->
+                        <h3 id="stat-patients">1,284</h3>
+                        <p>Total Patients</p>
+                        <span class="stat-trend positive"><i class="fas fa-arrow-up"></i> 12%</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+                    <div class="stat-info">
+                        <!-- UPDATED: Added id="stat-consultations" -->
+                        <h3 id="stat-consultations">48</h3>
+                        <p>Today's Consultations</p>
+                        <span class="stat-trend positive"><i class="fas fa-arrow-up"></i> 8%</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon yellow">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <!-- UPDATED: Added id="stat-pending" -->
+                        <h3 id="stat-pending">12</h3>
+                        <p>Pending Reports</p>
+                        <span class="stat-trend negative"><i class="fas fa-arrow-down"></i> 3%</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <div class="stat-info">
+                        <!-- UPDATED: Added id="stat-blockchain" -->
+                        <h3 id="stat-blockchain">2,456</h3>
+                        <p>Blockchain Transactions</p>
+                        <span class="stat-trend positive"><i class="fas fa-check-circle"></i> Verified</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- TWO-COLUMN LAYOUT                         -->
+            <!-- ========================================== -->
+            <div class="content-grid">
+
+                <!-- LEFT COLUMN: Recent Consultations Table -->
+                <div class="card table-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-list-ul"></i> Recent Consultations</h3>
+                        <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Patient</th>
+                                    <th>Doctor</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Blockchain Hash</th>
+                                </tr>
+                            </thead>
+                            <!-- UPDATED: Added id="consultation-table-body" and REMOVED all static <tr> rows -->
+                            <tbody id="consultation-table-body">
+                                <!-- JavaScript will dynamically populate this -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN: Blockchain Smart Widget -->
+                <div class="card blockchain-widget">
+                    <div class="card-header">
+                        <h3><i class="fas fa-cube"></i> Blockchain Status</h3>
+                        <span class="chain-badge"><i class="fas fa-circle"></i> Live</span>
+                    </div>
+                    <div class="card-body">
+                        <!-- Network Info -->
+                        <div class="chain-info">
+                            <div class="chain-item">
+                                <span class="label">Network</span>
+                                <!-- UPDATED: Added id="chain-network" -->
+                                <span id="chain-network" class="value">Ethereum (Sepolia)</span>
+                            </div>
+                            <div class="chain-item">
+                                <span class="label">Last Block</span>
+                                <!-- UPDATED: Added id="chain-block" -->
+                                <span id="chain-block" class="value">#4,203,891</span>
+                            </div>
+                            <div class="chain-item">
+                                <span class="label">Gas Fee</span>
+                                <!-- UPDATED: Added id="chain-gas" -->
+                                <span id="chain-gas" class="value" style="color: #10b981;">Low (18 Gwei)</span>
+                            </div>
+                            <div class="chain-item">
+                                <span class="label">Active Nodes</span>
+                                <!-- UPDATED: Added id="chain-nodes" -->
+                                <span id="chain-nodes" class="value">6/6 Synced</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <!-- Recent Transaction -->
+                        <div class="recent-tx">
+                            <p class="tx-title"><i class="fas fa-exchange-alt"></i> Latest Record Stored</p>
+                            <div class="tx-hash">
+                                <span>0x7f9e8a3b2c1d5e6f7a8b9c0d1e2f3a4b5c6d7e8f</span>
+                                <button class="copy-btn"><i class="far fa-copy"></i></button>
+                            </div>
+                            <p class="tx-time">Stored 2 minutes ago · <span class="verified">✔ Verified</span></p>
+                        </div>
+                        <!-- Action Button -->
+                        <button class="verify-btn"><i class="fas fa-shield-alt"></i> Verify All Records on Chain</button>
+                    </div>
+                </div>
+
+            </div> <!-- End of content-grid -->
+
+        </main> <!-- End of main-content -->
+    </div> <!-- End of app-container -->
+
+    <!-- ========================================== -->
+    <!-- UPDATED: Import JavaScript Modules        -->
+    <!-- ========================================== -->
+    <script type="module" src="js/app.js"></script>
+
+</body>
+</html>

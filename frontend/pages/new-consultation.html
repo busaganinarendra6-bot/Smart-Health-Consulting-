@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Consultation · Smart Health</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Additional form-specific styles -->
+    <style>
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        .form-container .card {
+            padding: 2rem;
+        }
+        .form-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+        .form-title i {
+            color: #0d9488;
+            margin-right: 10px;
+        }
+        .form-subtitle {
+            color: #64748b;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #1e293b;
+            margin-bottom: 6px;
+        }
+        .form-group label i {
+            color: #0d9488;
+            width: 20px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background: white;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #0d9488;
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #f1f5f9;
+        }
+        .btn-submit {
+            background: #0d9488;
+            color: white;
+            border: none;
+            padding: 0.8rem 2.5rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-submit:hover {
+            background: #0f766e;
+        }
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .btn-cancel {
+            background: white;
+            color: #1e293b;
+            border: 1px solid #e2e8f0;
+            padding: 0.8rem 2.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-cancel:hover {
+            background: #f8fafc;
+        }
+        .success-message {
+            display: none;
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            color: #065f46;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        .success-message i {
+            color: #0d9488;
+            margin-right: 10px;
+        }
+        .error-message {
+            display: none;
+            background: #fef2f2;
+            border: 1px solid #fca5a5;
+            color: #991b1b;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        .blockchain-preview {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            margin-top: 1rem;
+            display: none;
+        }
+        .blockchain-preview .label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: #94a3b8;
+            font-weight: 600;
+        }
+        .blockchain-preview .hash {
+            font-family: 'Courier New', monospace;
+            color: #0f172a;
+            font-weight: 500;
+        }
+        @media screen and (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .form-actions {
+                flex-direction: column;
+            }
+            .btn-submit, .btn-cancel {
+                justify-content: center;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+
+        <!-- ========================================== -->
+        <!-- SIDEBAR                                    -->
+        <!-- ========================================== -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <i class="fas fa-hexagon"></i>
+                <span>Health<span>Chain</span></span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="./index.html"><i class="fas fa-th-large"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fas fa-user-injured"></i> Patients</a></li>
+                    <li><a href="#"><i class="fas fa-user-md"></i> Doctors</a></li>
+                    <li class="active"><a href="#"><i class="fas fa-calendar-plus"></i> New Consultation</a></li>
+                    <li><a href="#"><i class="fas fa-file-medical"></i> Health Records</a></li>
+                    <li><a href="#"><i class="fas fa-link"></i> Blockchain Ledger</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <img src="https://ui-avatars.com/api/?name=Frontend+Dev&background=0D9488&color=fff&size=40" alt="User Avatar">
+                    <div>
+                        <p class="user-name">Frontend Dev</p>
+                        <p class="user-role">System Admin</p>
+                    </div>
+                </div>
+                <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i></a>
+            </div>
+        </aside>
+
+        <!-- ========================================== -->
+        <!-- MAIN CONTENT (Form)                       -->
+        <!-- ========================================== -->
+        <main class="main-content">
+
+            <header class="top-header">
+                <div class="header-left">
+                    <!-- FIXED: Correct path to go back to dashboard -->
+                    <a href="./index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+                    <h1>New Consultation</h1>
+                    <p class="breadcrumb">Consultations / <span>Add New</span></p>
+                </div>
+                <div class="header-right">
+                    <div class="chain-status">
+                        <i class="fas fa-circle" style="color: #10b981;"></i> 
+                        <span>Mainnet Live</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Form Container -->
+            <div class="form-container">
+                <div class="card">
+                    <div class="form-title">
+                        <i class="fas fa-stethoscope"></i> Schedule New Consultation
+                    </div>
+                    <p class="form-subtitle">
+                        Fill in the details below. The record will be stored on the blockchain (simulated).
+                    </p>
+
+                    <!-- Success / Error Messages -->
+                    <div id="success-message" class="success-message">
+                        <i class="fas fa-check-circle"></i> <span id="success-text">Consultation added successfully!</span>
+                    </div>
+                    <div id="error-message" class="error-message">
+                        <i class="fas fa-exclamation-circle"></i> <span id="error-text">Something went wrong.</span>
+                    </div>
+
+                    <!-- The Form -->
+                    <form id="consultation-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="patient"><i class="fas fa-user"></i> Patient</label>
+                                <select id="patient" required>
+                                    <option value="">-- Select Patient --</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="doctor"><i class="fas fa-user-md"></i> Doctor</label>
+                                <input type="text" id="doctor" placeholder="e.g., Dr. Smith" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="date"><i class="fas fa-calendar"></i> Date</label>
+                                <input type="date" id="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="status"><i class="fas fa-flag"></i> Status</label>
+                                <select id="status">
+                                    <option value="Pending">Pending</option>
+                                    <option value="Completed">Completed</option>
+                                    <option value="Under Review">Under Review</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="diagnosis"><i class="fas fa-file-medical"></i> Diagnosis</label>
+                            <input type="text" id="diagnosis" placeholder="e.g., Hypertension checkup" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="prescription"><i class="fas fa-prescription"></i> Prescription</label>
+                            <textarea id="prescription" placeholder="e.g., Lisinopril 10mg, take once daily"></textarea>
+                        </div>
+
+                        <!-- Blockchain Preview -->
+                        <div id="blockchain-preview" class="blockchain-preview">
+                            <span class="label"><i class="fas fa-link"></i> Blockchain Transaction Hash</span>
+                            <p class="hash" id="tx-hash">0x7f9e...abc1</p>
+                            <small style="color: #64748b;">✓ This record has been immutably stored on the blockchain.</small>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn-submit" id="submit-btn">
+                                <i class="fas fa-save"></i> Save & Verify on Chain
+                            </button>
+                            <a href="./index.html" class="btn-cancel">
+                                <i class="fas fa-times"></i> Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- JAVASCRIPT: consultation.js               -->
+    <!-- ========================================== -->
+    <script type="module" src="../js/consultation.js"></script>
+
+</body>
+</html>
